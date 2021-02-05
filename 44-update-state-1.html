@@ -1,0 +1,79 @@
+
+<html>
+    <head>
+        <title></title>
+    </head>
+    <body>
+
+        <div id = 'root'>
+
+        </div>
+        <script src = "C:\Users\Niranjan\jan-2020-mern\reactjs\js\react.development.js"></script>
+
+        <script src = "C:\Users\Niranjan\jan-2020-mern\reactjs\js\react-dom.development.js"></script>
+
+        <script src = "C:\Users\Niranjan\jan-2020-mern\reactjs\js\babel.js"></script>
+
+        <script src = "C:\Users\Niranjan\jan-2020-mern\reactjs\js\axios.js"></script>
+
+        <script type ="text/babel"> 
+        const rootHandle = document.getElementById('root')
+
+         class Counter extends React.Component {
+            constructor() {
+                super()
+                this.state = {
+                    count: 0
+                }
+            }
+
+            handleClick = ()=>{
+                this.setState(prevState => ({
+                    count : prevState.count + 1
+                })) 
+            }
+
+            handleGenerate = (n)=>{
+                this.setState({count : n})
+            }
+           
+            render() {
+                return (
+                    <div> 
+                        <h1> { this.state.count } </h1>
+                        <Btn 
+                        hc = {this.handleClick}
+                        handleGenerate = {this.handleGenerate} 
+                        count={this.state.count}                        
+                        />
+                    </div> 
+                )
+            }
+        }
+
+
+        function Btn(props) {
+
+            const handleRandom= ()=>{
+                const random = Math.round(Math.random()*100)
+                props.handleGenerate(random)
+            }
+
+              return (
+                <div>
+                <button onClick={props.hc}>{props.count} up </button> 
+                <button onClick = {handleRandom}> generate random </button>
+                </div>
+            )
+        }
+
+    ReactDOM.render(<Counter />, rootHandle) 
+     </script>
+   </body>
+</html>
+
+
+
+
+
+
